@@ -1,19 +1,19 @@
+import React from 'react';
+import { Menu } from 'antd';
 import Link from 'next/link';
 
 const Navbar = () => (
-  <nav className='flex justify-between items-center p-4'>
-    <Link href='/' legacyBehavior>
-      <a className='text-lg font-bold'>Fashion Shoes</a>
-    </Link>
-    <div className='flex space-x-4'>
-      <Link href='/profile' legacyBehavior>
-        <a>Profile</a>
-      </Link>
-      <Link href='/cart' legacyBehavior>
-        <a>Cart</a>
-      </Link>
-    </div>
-  </nav>
+  <Menu mode="horizontal" theme="dark">
+    <Menu.Item key="home">
+      <Link href="/">Home</Link>
+    </Menu.Item>
+    <Menu.Item key="profile">
+      <Link href="/profile">Profile</Link>
+    </Menu.Item>
+    <Menu.Item key="cart">
+      <Link href="/cart">Cart</Link>
+    </Menu.Item>
+  </Menu>
 );
 
 export default Navbar;

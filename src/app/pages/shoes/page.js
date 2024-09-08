@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase/firebaseConfig';
-import ShoeCard from '../../components/ShoeCard';
+import ShoeCard from '../../components/ShoeCard.js';
 
 const Shoes = () => {
   const [shoes, setShoes] = useState([]);

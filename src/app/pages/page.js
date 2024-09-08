@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase/firebaseConfig';
+import { Layout, Button, Typography, Image } from 'antd';
+
+const { Content } = Layout;
+const { Title, Paragraph } = Typography;
 
 const ShoeDetails = () => {
   const { id } = useParams();
@@ -15,21 +19,25 @@ const ShoeDetails = () => {
     fetchShoe();
   }, [id]);
 
-  if (!shoe) return <p>Loading...</p>;
+  if (!shoe) return <Paragraph>Loading...</Paragraph>;
 
   return (
-    <div>
-      <h1>{shoe.name}</h1>
-      <img src={shoe.image} alt={shoe.name} />
-      <p>Type: {shoe.type}</p>
-      <p>Cost: ${shoe.cost}</p>
-      <p>Rated: {shoe.ratedStar} stars</p>
-      <p>Color: {shoe.color}</p>
-      <p>Size: {shoe.size}</p>
-      <p>Product Information: {shoe.productInformation}</p>
-      <button>Buy Now</button>
-      <button>Add to Cart</button>
-    </div>
+    <Layout>
+      <Content style={{ padding: '0 50px', marginTop: 64 }}>
+        <div className="site-layout-content" style={{ padding: 24, minHeight: 380 }}>
+          <Title>{shoe.name}</Title>
+          <Image src={shoe.image} alt={shoe.name} />
+          <Paragraph>Type: {shoe.type}</Paragraph>
+          <Paragraph>Cost: ${shoe.cost}</Paragraph>
+          <Paragraph>Rated: {shoe.ratedStar} stars</Paragraph>
+          <Paragraph>Color: {shoe.color}</Paragraph>
+          <Paragraph>Size: {shoe.size}</Paragraph>
+          <Paragraph>Product Information: {shoe.productInformation}</Paragraph>
+          <Button type="primary">Buy Now</Button>
+          <Button>Add to Cart</Button>
+        </div>
+      </Content>
+    </Layout>
   );
 };
 
